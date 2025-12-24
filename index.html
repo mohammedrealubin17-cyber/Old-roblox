@@ -38,6 +38,7 @@
             font-weight: bold;
             text-decoration: none;
             letter-spacing: 2px;
+            cursor: pointer;
         }
 
         #logo span {
@@ -47,9 +48,10 @@
         #user-nav {
             display: flex;
             gap: 15px;
+            align-items: center;
         }
 
-        #user-nav a {
+        #user-nav a, #user-nav button {
             color: #fff;
             text-decoration: none;
             font-size: 12px;
@@ -57,10 +59,17 @@
             border-radius: 3px;
             background: #2c2c2c;
             border: 1px solid #444;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
         }
 
-        #user-nav a:hover {
+        #user-nav a:hover, #user-nav button:hover {
             background: #3c3c3c;
+        }
+
+        .username-display {
+            color: #00a651 !important;
+            font-weight: bold;
         }
 
         /* Navigation */
@@ -80,9 +89,10 @@
             background: #006bb3;
             border: 1px solid #005a8f;
             border-radius: 3px;
+            cursor: pointer;
         }
 
-        #navigation a:hover {
+        #navigation a:hover, #navigation a.active {
             background: #0085d4;
         }
 
@@ -125,6 +135,7 @@
             text-decoration: none;
             font-size: 11px;
             padding: 3px 0;
+            cursor: pointer;
         }
 
         .sidebar-box a:hover {
@@ -191,6 +202,7 @@
             color: #fff;
             font-size: 11px;
             font-weight: bold;
+            position: relative;
         }
 
         .game-title {
@@ -220,6 +232,25 @@
 
         .game-play-btn:hover {
             background: #00b359;
+        }
+
+        .game-like-btn {
+            background: #0074bd;
+            color: #fff;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+
+        .game-like-btn:hover {
+            background: #0085d4;
+        }
+
+        .game-like-btn.liked {
+            background: #00a651;
         }
 
         /* Banner */
@@ -272,6 +303,228 @@
         #footer a {
             color: #0074bd;
             text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 25px;
+            border-radius: 5px;
+            border: 2px solid #999;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-body {
+            margin-bottom: 15px;
+        }
+
+        .modal-body input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .modal-btn-primary {
+            background: #0074bd;
+            color: #fff;
+        }
+
+        .modal-btn-primary:hover {
+            background: #0085d4;
+        }
+
+        .modal-btn-secondary {
+            background: #999;
+            color: #fff;
+        }
+
+        .modal-btn-secondary:hover {
+            background: #777;
+        }
+
+        /* Game Player Modal */
+        .game-player {
+            max-width: 800px;
+            width: 95%;
+        }
+
+        .game-screen {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 2px solid #999;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .game-info {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* Profile Page */
+        .profile-header {
+            background: linear-gradient(to right, #0074bd, #006bb3);
+            color: #fff;
+            padding: 20px;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: #2c2c2c;
+            border: 3px solid #fff;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 3px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0074bd;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Catalog Page */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .catalog-item {
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .catalog-item:hover {
+            border-color: #0074bd;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 100px;
+            background: #ddd;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .item-name {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .item-price {
+            font-size: 11px;
+            color: #00a651;
+            font-weight: bold;
+        }
+
+        .buy-btn {
+            background: #00a651;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 10px;
+            cursor: pointer;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        .buy-btn:hover {
+            background: #00b359;
         }
     </style>
 </head>
@@ -279,19 +532,24 @@
     <!-- Header -->
     <div id="header">
         <div id="header-top">
-            <a href="#" id="logo">ROBL<span>O</span>X</a>
+            <a id="logo" onclick="showPage('home')">ROBL<span>O</span>X</a>
             <div id="user-nav">
-                <a href="#">Login</a>
-                <a href="#">Register</a>
+                <span id="userDisplay" class="hidden">
+                    <span class="username-display" id="usernameText"></span>
+                    <button onclick="logout()">Logout</button>
+                </span>
+                <span id="guestDisplay">
+                    <a onclick="showLoginModal()">Login</a>
+                    <a onclick="showRegisterModal()">Register</a>
+                </span>
             </div>
         </div>
         <div id="navigation">
-            <a href="#">Games</a>
-            <a href="#">Catalog</a>
-            <a href="#">Build</a>
-            <a href="#">Forums</a>
-            <a href="#">News</a>
-            <a href="#">Upgrades</a>
+            <a onclick="showPage('home')" class="nav-link active" data-page="home">Games</a>
+            <a onclick="showPage('catalog')" class="nav-link" data-page="catalog">Catalog</a>
+            <a onclick="showPage('build')" class="nav-link" data-page="build">Build</a>
+            <a onclick="showPage('profile')" class="nav-link" data-page="profile">Profile</a>
+            <a onclick="alert('Forums coming soon!')">Forums</a>
         </div>
     </div>
 
@@ -301,114 +559,116 @@
         <div id="sidebar">
             <div class="sidebar-box">
                 <h3>My Account</h3>
-                <a href="#">Profile</a>
-                <a href="#">Messages (3)</a>
-                <a href="#">Friends</a>
-                <a href="#">Character</a>
-                <a href="#">Inventory</a>
+                <a onclick="showPage('profile')">Profile</a>
+                <a onclick="alert('Messages: You have 0 new messages')">Messages (0)</a>
+                <a onclick="alert('Friends list coming soon!')">Friends</a>
+                <a onclick="alert('Character customization coming soon!')">Character</a>
+                <a onclick="showPage('catalog')">Inventory</a>
             </div>
             <div class="sidebar-box">
                 <h3>Favorites</h3>
-                <a href="#">My Games</a>
-                <a href="#">Recent</a>
-                <a href="#">Top Rated</a>
+                <a onclick="showFavoriteGames()">My Games</a>
+                <a onclick="sortGames('recent')">Recent</a>
+                <a onclick="sortGames('popular')">Top Rated</a>
             </div>
             <div class="sidebar-box">
                 <h3>Tools</h3>
-                <a href="#">ROBLOX Studio</a>
-                <a href="#">Developer Hub</a>
-                <a href="#">Trade Items</a>
+                <a onclick="showPage('build')">ROBLOX Studio</a>
+                <a onclick="alert('Developer Hub coming soon!')">Developer Hub</a>
+                <a onclick="alert('Trading coming soon!')">Trade Items</a>
             </div>
         </div>
 
         <!-- Main Content -->
         <div id="content">
-            <!-- Welcome Banner -->
-            <div class="banner">
-                <h1>Welcome to ROBLOX!</h1>
-                <p>A FREE virtual world-building game with avatar chat, 3D environments, and physics</p>
-                <a href="#" class="btn-large">PLAY NOW - IT'S FREE!</a>
+            <!-- HOME PAGE -->
+            <div id="homePage" class="page-content">
+                <div class="banner">
+                    <h1>Welcome to ROBLOX!</h1>
+                    <p>A FREE virtual world-building game with avatar chat, 3D environments, and physics</p>
+                    <a class="btn-large" onclick="showPage('games')">PLAY NOW - IT'S FREE!</a>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-header">Featured Games</div>
+                    <div class="box-content">
+                        <div class="games-grid" id="gamesGrid"></div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-header">ROBLOX News</div>
+                    <div class="box-content">
+                        <p style="font-size: 12px; line-height: 1.6; color: #555;">
+                            <strong>New Building Tools Released!</strong><br>
+                            Check out the latest updates to ROBLOX Studio with improved terrain tools and new parts. Start building your dream game today!
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Featured Games -->
-            <div class="content-box">
-                <div class="box-header">Featured Games</div>
-                <div class="box-content">
-                    <div class="games-grid">
-                        <div class="game-card">
-                            <div class="game-thumbnail">GAME</div>
-                            <div class="game-title">Sword Fight Arena</div>
-                            <div class="game-stats">⬆ 1,234 | 👤 567 playing</div>
-                            <button class="game-play-btn">Play</button>
-                        </div>
-                        <div class="game-card">
-                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">GAME</div>
-                            <div class="game-title">Build to Survive</div>
-                            <div class="game-stats">⬆ 2,156 | 👤 892 playing</div>
-                            <button class="game-play-btn">Play</button>
-                        </div>
-                        <div class="game-card">
-                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">GAME</div>
-                            <div class="game-title">Obby Challenge</div>
-                            <div class="game-stats">⬆ 3,421 | 👤 1,023 playing</div>
-                            <button class="game-play-btn">Play</button>
-                        </div>
-                        <div class="game-card">
-                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">GAME</div>
-                            <div class="game-title">Tycoon Empire</div>
-                            <div class="game-stats">⬆ 987 | 👤 234 playing</div>
-                            <button class="game-play-btn">Play</button>
-                        </div>
-                        <div class="game-card">
-                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">GAME</div>
-                            <div class="game-title">Ninja Warriors</div>
-                            <div class="game-stats">⬆ 1,567 | 👤 445 playing</div>
-                            <button class="game-play-btn">Play</button>
-                        </div>
-                        <div class="game-card">
-                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">GAME</div>
-                            <div class="game-title">Racing Madness</div>
-                            <div class="game-stats">⬆ 2,890 | 👤 678 playing</div>
-                            <button class="game-play-btn">Play</button>
-                        </div>
-                        <div class="game-card">
-                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">GAME</div>
-                            <div class="game-title">Zombie Survival</div>
-                            <div class="game-stats">⬆ 4,123 | 👤 1,234 playing</div>
-                            <button class="game-play-btn">Play</button>
-                        </div>
-                        <div class="game-card">
-                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">GAME</div>
-                            <div class="game-title">City Roleplay</div>
-                            <div class="game-stats">⬆ 1,876 | 👤 523 playing</div>
-                            <button class="game-play-btn">Play</button>
+            <!-- CATALOG PAGE -->
+            <div id="catalogPage" class="page-content hidden">
+                <div class="content-box">
+                    <div class="box-header">Catalog Items</div>
+                    <div class="box-content">
+                        <div class="catalog-grid" id="catalogGrid"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUILD PAGE -->
+            <div id="buildPage" class="page-content hidden">
+                <div class="content-box">
+                    <div class="box-header">ROBLOX Studio</div>
+                    <div class="box-content">
+                        <h3 style="margin-bottom: 10px;">Create Your Own Game!</h3>
+                        <p style="font-size: 12px; margin-bottom: 15px; line-height: 1.6;">
+                            Use ROBLOX Studio to build amazing games and worlds. Start with a template or create from scratch!
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                            <div style="background: #f9f9f9; padding: 15px; border: 1px solid #ccc; border-radius: 3px; text-align: center;">
+                                <div style="font-size: 40px; margin-bottom: 10px;">🏰</div>
+                                <strong>Baseplate</strong>
+                                <p style="font-size: 11px; color: #666; margin-top: 5px;">Start with a simple flat world</p>
+                                <button class="game-play-btn" onclick="alert('Studio launching...')">Create</button>
+                            </div>
+                            <div style="background: #f9f9f9; padding: 15px; border: 1px solid #ccc; border-radius: 3px; text-align: center;">
+                                <div style="font-size: 40px; margin-bottom: 10px;">🏞️</div>
+                                <strong>Terrain</strong>
+                                <p style="font-size: 11px; color: #666; margin-top: 5px;">Mountains and valleys</p>
+                                <button class="game-play-btn" onclick="alert('Studio launching...')">Create</button>
+                            </div>
+                            <div style="background: #f9f9f9; padding: 15px; border: 1px solid #ccc; border-radius: 3px; text-align: center;">
+                                <div style="font-size: 40px; margin-bottom: 10px;">🏙️</div>
+                                <strong>City</strong>
+                                <p style="font-size: 11px; color: #666; margin-top: 5px;">Urban environment ready</p>
+                                <button class="game-play-btn" onclick="alert('Studio launching...')">Create</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Community -->
-            <div class="content-box">
-                <div class="box-header">ROBLOX News</div>
-                <div class="box-content">
-                    <p style="font-size: 12px; line-height: 1.6; color: #555;">
-                        <strong>New Building Tools Released!</strong><br>
-                        Check out the latest updates to ROBLOX Studio with improved terrain tools and new parts. Start building your dream game today!
-                    </p>
+            <!-- PROFILE PAGE -->
+            <div id="profilePage" class="page-content hidden">
+                <div class="profile-header">
+                    <div class="profile-avatar">👤</div>
+                    <h2 id="profileUsername">Guest</h2>
+                    <p style="font-size: 12px; opacity: 0.9;">Member since: <span id="memberSince">Today</span></p>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Footer -->
-    <div id="footer">
-        <p>&copy; 2007-2017 ROBLOX Corporation. All rights reserved.</p>
-        <p>
-            <a href="#">About Us</a> | 
-            <a href="#">Help</a> | 
-            <a href="#">Terms of Service</a> | 
-            <a href="#">Privacy Policy</a>
-        </p>
-    </div>
-</body>
-</html>
+                <div class="content-box">
+                    <div class="box-header">Statistics</div>
+                    <div class="box-content">
+                        <div class="profile-stats">
+                            <div class="stat-box">
+                                <div class="stat-number" id="gamesPlayedStat">0</div>
+                                <div class="stat-label">Games Played</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number" id="favoritesStat">0</div>
+                                <div class="stat-label">Favorites</div>
+                            </div>
+                            <div class="stat-box">
+                                <d
