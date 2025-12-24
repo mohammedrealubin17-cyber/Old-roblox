@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROBLOX - Free Online Building Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Verdana, sans-serif;
+            background: #e3e3e3;
+            color: #333;
+        }
+
+        /* Header */
+        #header {
+            background: #191919;
+            border-bottom: 4px solid #000;
+            padding: 0;
+        }
+
+        #header-top {
+            background: linear-gradient(to bottom, #444, #191919);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #logo {
+            color: #fff;
+            font-size: 32px;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        #logo span {
+            color: #e74c3c;
+        }
+
+        #user-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        #user-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background: #2c2c2c;
+            border: 1px solid #444;
+        }
+
+        #user-nav a:hover {
+            background: #3c3c3c;
+        }
+
+        /* Navigation */
+        #navigation {
+            background: #0074bd;
+            padding: 10px 20px;
+            display: flex;
+            gap: 5px;
+        }
+
+        #navigation a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: bold;
+            background: #006bb3;
+            border: 1px solid #005a8f;
+            border-radius: 3px;
+        }
+
+        #navigation a:hover {
+            background: #0085d4;
+        }
+
+        /* Main Content */
+        #container {
+            max-width: 970px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 10px;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            background: #fff;
+            border: 1px solid #999;
+            padding: 10px;
+        }
+
+        .sidebar-box {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sidebar-box:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-box h3 {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-box a {
+            display: block;
+            color: #0074bd;
+            text-decoration: none;
+            font-size: 11px;
+            padding: 3px 0;
+        }
+
+        .sidebar-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content Area */
+        #content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .content-box {
+            background: #fff;
+            border: 1px solid #999;
+            border-radius: 3px;
+        }
+
+        .box-header {
+            background: linear-gradient(to bottom, #f5f5f5, #e5e5e5);
+            border-bottom: 1px solid #999;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .box-content {
+            padding: 12px;
+        }
+
+        /* Featured Games Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .game-card {
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            background: #f0f0f0;
+            border-color: #0074bd;
+        }
+
+        .game-thumbnail {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 1px solid #999;
+            border-radius: 2px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .game-title {
+            font-size: 11px;
+            color: #333;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+
+        .game-stats {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .game-play-btn {
+            background: #00a651;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        .game-play-btn:hover {
+            background: #00b359;
+        }
+
+        /* Banner */
+        .banner {
+            background: linear-gradient(to right, #0074bd, #00a651);
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 3px;
+        }
+
+        .banner h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-large {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-large:hover {
+            background: #c0392b;
+        }
+
+        /* Footer */
+        #footer {
+            background: #191919;
+            color: #999;
+            padding: 20px;
+            text-align: center;
+            font-size: 11px;
+            margin-top: 20px;
+            border-top: 4px solid #000;
+        }
+
+        #footer a {
+            color: #0074bd;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header">
+        <div id="header-top">
+            <a href="#" id="logo">ROBL<span>O</span>X</a>
+            <div id="user-nav">
+                <a href="#">Login</a>
+                <a href="#">Register</a>
+            </div>
+        </div>
+        <div id="navigation">
+            <a href="#">Games</a>
+            <a href="#">Catalog</a>
+            <a href="#">Build</a>
+            <a href="#">Forums</a>
+            <a href="#">News</a>
+            <a href="#">Upgrades</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="container">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-box">
+                <h3>My Account</h3>
+                <a href="#">Profile</a>
+                <a href="#">Messages (3)</a>
+                <a href="#">Friends</a>
+                <a href="#">Character</a>
+                <a href="#">Inventory</a>
+            </div>
+            <div class="sidebar-box">
+                <h3>Favorites</h3>
+                <a href="#">My Games</a>
+                <a href="#">Recent</a>
+                <a href="#">Top Rated</a>
+            </div>
+            <div class="sidebar-box">
+                <h3>Tools</h3>
+                <a href="#">ROBLOX Studio</a>
+                <a href="#">Developer Hub</a>
+                <a href="#">Trade Items</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Welcome Banner -->
+            <div class="banner">
+                <h1>Welcome to ROBLOX!</h1>
+                <p>A FREE virtual world-building game with avatar chat, 3D environments, and physics</p>
+                <a href="#" class="btn-large">PLAY NOW - IT'S FREE!</a>
+            </div>
+
+            <!-- Featured Games -->
+            <div class="content-box">
+                <div class="box-header">Featured Games</div>
+                <div class="box-content">
+                    <div class="games-grid">
+                        <div class="game-card">
+                            <div class="game-thumbnail">GAME</div>
+                            <div class="game-title">Sword Fight Arena</div>
+                            <div class="game-stats">⬆ 1,234 | 👤 567 playing</div>
+                            <button class="game-play-btn">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">GAME</div>
+                            <div class="game-title">Build to Survive</div>
+                            <div class="game-stats">⬆ 2,156 | 👤 892 playing</div>
+                            <button class="game-play-btn">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">GAME</div>
+                            <div class="game-title">Obby Challenge</div>
+                            <div class="game-stats">⬆ 3,421 | 👤 1,023 playing</div>
+                            <button class="game-play-btn">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">GAME</div>
+                            <div class="game-title">Tycoon Empire</div>
+                            <div class="game-stats">⬆ 987 | 👤 234 playing</div>
+                            <button class="game-play-btn">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">GAME</div>
+                            <div class="game-title">Ninja Warriors</div>
+                            <div class="game-stats">⬆ 1,567 | 👤 445 playing</div>
+                            <button class="game-play-btn">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">GAME</div>
+                            <div class="game-title">Racing Madness</div>
+                            <div class="game-stats">⬆ 2,890 | 👤 678 playing</div>
+                            <button class="game-play-btn">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">GAME</div>
+                            <div class="game-title">Zombie Survival</div>
+                            <div class="game-stats">⬆ 4,123 | 👤 1,234 playing</div>
+                            <button class="game-play-btn">Play</button>
+                        </div>
+                        <div class="game-card">
+                            <div class="game-thumbnail" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">GAME</div>
+                            <div class="game-title">City Roleplay</div>
+                            <div class="game-stats">⬆ 1,876 | 👤 523 playing</div>
+                            <button class="game-play-btn">Play</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community -->
+            <div class="content-box">
+                <div class="box-header">ROBLOX News</div>
+                <div class="box-content">
+                    <p style="font-size: 12px; line-height: 1.6; color: #555;">
+                        <strong>New Building Tools Released!</strong><br>
+                        Check out the latest updates to ROBLOX Studio with improved terrain tools and new parts. Start building your dream game today!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <p>&copy; 2007-2017 ROBLOX Corporation. All rights reserved.</p>
+        <p>
+            <a href="#">About Us</a> | 
+            <a href="#">Help</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Privacy Policy</a>
+        </p>
+    </div>
+</body>
+</html>
