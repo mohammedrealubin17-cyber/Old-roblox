@@ -1,674 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROBLOX - Free Online Building Game</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Verdana, sans-serif;
-            background: #e3e3e3;
-            color: #333;
-        }
-
-        /* Header */
-        #header {
-            background: #191919;
-            border-bottom: 4px solid #000;
-            padding: 0;
-        }
-
-        #header-top {
-            background: linear-gradient(to bottom, #444, #191919);
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #logo {
-            color: #fff;
-            font-size: 32px;
-            font-weight: bold;
-            text-decoration: none;
-            letter-spacing: 2px;
-            cursor: pointer;
-        }
-
-        #logo span {
-            color: #e74c3c;
-        }
-
-        #user-nav {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        #user-nav a, #user-nav button {
-            color: #fff;
-            text-decoration: none;
-            font-size: 12px;
-            padding: 5px 10px;
-            border-radius: 3px;
-            background: #2c2c2c;
-            border: 1px solid #444;
-            cursor: pointer;
-            font-family: Arial, sans-serif;
-        }
-
-        #user-nav a:hover, #user-nav button:hover {
-            background: #3c3c3c;
-        }
-
-        .username-display {
-            color: #00a651 !important;
-            font-weight: bold;
-        }
-
-        /* Navigation */
-        #navigation {
-            background: #0074bd;
-            padding: 10px 20px;
-            display: flex;
-            gap: 5px;
-        }
-
-        #navigation a {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 16px;
-            font-size: 13px;
-            font-weight: bold;
-            background: #006bb3;
-            border: 1px solid #005a8f;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        #navigation a:hover, #navigation a.active {
-            background: #0085d4;
-        }
-
-        /* Main Content */
-        #container {
-            max-width: 970px;
-            margin: 20px auto;
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 10px;
-        }
-
-        /* Sidebar */
-        #sidebar {
-            background: #fff;
-            border: 1px solid #999;
-            padding: 10px;
-        }
-
-        .sidebar-box {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .sidebar-box:last-child {
-            border-bottom: none;
-        }
-
-        .sidebar-box h3 {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .sidebar-box a {
-            display: block;
-            color: #0074bd;
-            text-decoration: none;
-            font-size: 11px;
-            padding: 3px 0;
-            cursor: pointer;
-        }
-
-        .sidebar-box a:hover {
-            text-decoration: underline;
-        }
-
-        /* Main Content Area */
-        #content {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .content-box {
-            background: #fff;
-            border: 1px solid #999;
-            border-radius: 3px;
-        }
-
-        .box-header {
-            background: linear-gradient(to bottom, #f5f5f5, #e5e5e5);
-            border-bottom: 1px solid #999;
-            padding: 8px 12px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .box-content {
-            padding: 12px;
-        }
-
-        /* Featured Games Grid */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .game-card {
-            background: #f9f9f9;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            padding: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .game-card:hover {
-            background: #f0f0f0;
-            border-color: #0074bd;
-        }
-
-        .game-thumbnail {
-            width: 100%;
-            height: 120px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: 1px solid #999;
-            border-radius: 2px;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 11px;
-            font-weight: bold;
-            position: relative;
-        }
-
-        .game-title {
-            font-size: 11px;
-            color: #333;
-            margin-bottom: 3px;
-            font-weight: bold;
-        }
-
-        .game-stats {
-            font-size: 10px;
-            color: #666;
-        }
-
-        .game-play-btn {
-            background: #00a651;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 11px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 5px;
-            width: 100%;
-        }
-
-        .game-play-btn:hover {
-            background: #00b359;
-        }
-
-        .game-like-btn {
-            background: #0074bd;
-            color: #fff;
-            border: none;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 10px;
-            cursor: pointer;
-            margin-top: 3px;
-        }
-
-        .game-like-btn:hover {
-            background: #0085d4;
-        }
-
-        .game-like-btn.liked {
-            background: #00a651;
-        }
-
-        /* Banner */
-        .banner {
-            background: linear-gradient(to right, #0074bd, #00a651);
-            color: #fff;
-            padding: 30px;
-            text-align: center;
-            border-radius: 3px;
-        }
-
-        .banner h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .banner p {
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .btn-large {
-            background: #e74c3c;
-            color: #fff;
-            border: none;
-            padding: 12px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 3px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-large:hover {
-            background: #c0392b;
-        }
-
-        /* Footer */
-        #footer {
-            background: #191919;
-            color: #999;
-            padding: 20px;
-            text-align: center;
-            font-size: 11px;
-            margin-top: 20px;
-            border-top: 4px solid #000;
-        }
-
-        #footer a {
-            color: #0074bd;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #fff;
-            padding: 25px;
-            border-radius: 5px;
-            border: 2px solid #999;
-            max-width: 400px;
-            width: 90%;
-        }
-
-        .modal-header {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .modal-body {
-            margin-bottom: 15px;
-        }
-
-        .modal-body input {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            font-size: 13px;
-        }
-
-        .modal-footer {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .modal-btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        .modal-btn-primary {
-            background: #0074bd;
-            color: #fff;
-        }
-
-        .modal-btn-primary:hover {
-            background: #0085d4;
-        }
-
-        .modal-btn-secondary {
-            background: #999;
-            color: #fff;
-        }
-
-        .modal-btn-secondary:hover {
-            background: #777;
-        }
-
-        /* Game Player Modal */
-        .game-player {
-            max-width: 800px;
-            width: 95%;
-        }
-
-        .game-screen {
-            width: 100%;
-            height: 450px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: 2px solid #999;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .game-info {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        /* Profile Page */
-        .profile-header {
-            background: linear-gradient(to right, #0074bd, #006bb3);
-            color: #fff;
-            padding: 20px;
-            border-radius: 3px;
-            margin-bottom: 15px;
-        }
-
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            background: #2c2c2c;
-            border: 3px solid #fff;
-            border-radius: 3px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-        }
-
-        .profile-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .stat-box {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 3px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #0074bd;
-        }
-
-        .stat-label {
-            font-size: 11px;
-            color: #666;
-            text-transform: uppercase;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Catalog Page */
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .catalog-item {
-            background: #f9f9f9;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            padding: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .catalog-item:hover {
-            border-color: #0074bd;
-        }
-
-        .item-image {
-            width: 100%;
-            height: 100px;
-            background: #ddd;
-            border-radius: 3px;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-        }
-
-        .item-name {
-            font-size: 11px;
-            font-weight: bold;
-            margin-bottom: 3px;
-        }
-
-        .item-price {
-            font-size: 11px;
-            color: #00a651;
-            font-weight: bold;
-        }
-
-        .buy-btn {
-            background: #00a651;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 10px;
-            cursor: pointer;
-            margin-top: 5px;
-            width: 100%;
-        }
-
-        .buy-btn:hover {
-            background: #00b359;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Classic Roblox Clone</title>
+<style>
+body {margin:0; font-family:Arial; background:#b3e0ff; overflow:hidden;}
+canvas {display:block; background:#87ceeb;}
+#ui {position:absolute; top:10px; left:10px; background:rgba(255,255,255,0.9); padding:10px; border:2px solid #000;}
+#chat {position:absolute; bottom:0; left:10px; width:400px; max-height:250px; overflow-y:auto; background:rgba(255,255,255,0.9); border:2px solid #000; padding:5px;}
+#chatInput {width:380px; padding:5px;}
+button {font-size:14px; padding:3px 6px; margin:2px; cursor:pointer;}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <div id="header">
-        <div id="header-top">
-            <a id="logo" onclick="showPage('home')">ROBL<span>O</span>X</a>
-            <div id="user-nav">
-                <span id="userDisplay" class="hidden">
-                    <span class="username-display" id="usernameText"></span>
-                    <button onclick="logout()">Logout</button>
-                </span>
-                <span id="guestDisplay">
-                    <a onclick="showLoginModal()">Login</a>
-                    <a onclick="showRegisterModal()">Register</a>
-                </span>
-            </div>
-        </div>
-        <div id="navigation">
-            <a onclick="showPage('home')" class="nav-link active" data-page="home">Games</a>
-            <a onclick="showPage('catalog')" class="nav-link" data-page="catalog">Catalog</a>
-            <a onclick="showPage('build')" class="nav-link" data-page="build">Build</a>
-            <a onclick="showPage('profile')" class="nav-link" data-page="profile">Profile</a>
-            <a onclick="alert('Forums coming soon!')">Forums</a>
-        </div>
-    </div>
 
-    <!-- Main Container -->
-    <div id="container">
-        <!-- Sidebar -->
-        <div id="sidebar">
-            <div class="sidebar-box">
-                <h3>My Account</h3>
-                <a onclick="showPage('profile')">Profile</a>
-                <a onclick="alert('Messages: You have 0 new messages')">Messages (0)</a>
-                <a onclick="alert('Friends list coming soon!')">Friends</a>
-                <a onclick="alert('Character customization coming soon!')">Character</a>
-                <a onclick="showPage('catalog')">Inventory</a>
-            </div>
-            <div class="sidebar-box">
-                <h3>Favorites</h3>
-                <a onclick="showFavoriteGames()">My Games</a>
-                <a onclick="sortGames('recent')">Recent</a>
-                <a onclick="sortGames('popular')">Top Rated</a>
-            </div>
-            <div class="sidebar-box">
-                <h3>Tools</h3>
-                <a onclick="showPage('build')">ROBLOX Studio</a>
-                <a onclick="alert('Developer Hub coming soon!')">Developer Hub</a>
-                <a onclick="alert('Trading coming soon!')">Trade Items</a>
-            </div>
-        </div>
+<div id="ui">
+Username: <span id="usernameDisplay">Player1</span><br>
+Robux: <span id="robuxDisplay">100</span> | Tickets: <span id="tixDisplay">500</span><br>
+<button onclick="switchMap('obby')">Obby Map</button>
+<button onclick="switchMap('hangout')">Hangout Map</button>
+<button onclick="switchMap('brickworld')">Brick World Map</button>
+<button onclick="buyItem('hat',50)">Buy Hat (50 Tix)</button>
+<button onclick="buyItem('shirt',100)">Buy Shirt (100 Tix)</button>
+<button onclick="buyItem('pants',75)">Buy Pants (75 Tix)</button>
+<button onclick="collectCoins()">Collect Coin (+10 Tix)</button>
+</div>
 
-        <!-- Main Content -->
-        <div id="content">
-            <!-- HOME PAGE -->
-            <div id="homePage" class="page-content">
-                <div class="banner">
-                    <h1>Welcome to ROBLOX!</h1>
-                    <p>A FREE virtual world-building game with avatar chat, 3D environments, and physics</p>
-                    <a class="btn-large" onclick="showPage('games')">PLAY NOW - IT'S FREE!</a>
-                </div>
+<canvas id="gameCanvas" width="1400" height="700"></canvas>
 
-                <div class="content-box">
-                    <div class="box-header">Featured Games</div>
-                    <div class="box-content">
-                        <div class="games-grid" id="gamesGrid"></div>
-                    </div>
-                </div>
+<div id="chat">
+  <div id="chatMessages"></div>
+  <input type="text" id="chatInput" placeholder="Type message and hit Enter">
+</div>
 
-                <div class="content-box">
-                    <div class="box-header">ROBLOX News</div>
-                    <div class="box-content">
-                        <p style="font-size: 12px; line-height: 1.6; color: #555;">
-                            <strong>New Building Tools Released!</strong><br>
-                            Check out the latest updates to ROBLOX Studio with improved terrain tools and new parts. Start building your dream game today!
-                        </p>
-                    </div>
-                </div>
-            </div>
+<script>
+// CANVAS SETUP
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
-            <!-- CATALOG PAGE -->
-            <div id="catalogPage" class="page-content hidden">
-                <div class="content-box">
-                    <div class="box-header">Catalog Items</div>
-                    <div class="box-content">
-                        <div class="catalog-grid" id="catalogGrid"></div>
-                    </div>
-                </div>
-            </div>
+// PLAYER DEFINITION
+const player = {
+    x: 50, y: 600, width: 30, height: 50, color: '#ffcc00',
+    speed: 4, jumpPower: 12, vy: 0, onGround: false,
+    username: 'Player1', robux: 100, tix: 500,
+    inventory: []
+};
 
-            <!-- BUILD PAGE -->
-            <div id="buildPage" class="page-content hidden">
-                <div class="content-box">
-                    <div class="box-header">ROBLOX Studio</div>
-                    <div class="box-content">
-                        <h3 style="margin-bottom: 10px;">Create Your Own Game!</h3>
-                        <p style="font-size: 12px; margin-bottom: 15px; line-height: 1.6;">
-                            Use ROBLOX Studio to build amazing games and worlds. Start with a template or create from scratch!
-                        </p>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                            <div style="background: #f9f9f9; padding: 15px; border: 1px solid #ccc; border-radius: 3px; text-align: center;">
-                                <div style="font-size: 40px; margin-bottom: 10px;">🏰</div>
-                                <strong>Baseplate</strong>
-                                <p style="font-size: 11px; color: #666; margin-top: 5px;">Start with a simple flat world</p>
-                                <button class="game-play-btn" onclick="alert('Studio launching...')">Create</button>
-                            </div>
-                            <div style="background: #f9f9f9; padding: 15px; border: 1px solid #ccc; border-radius: 3px; text-align: center;">
-                                <div style="font-size: 40px; margin-bottom: 10px;">🏞️</div>
-                                <strong>Terrain</strong>
-                                <p style="font-size: 11px; color: #666; margin-top: 5px;">Mountains and valleys</p>
-                                <button class="game-play-btn" onclick="alert('Studio launching...')">Create</button>
-                            </div>
-                            <div style="background: #f9f9f9; padding: 15px; border: 1px solid #ccc; border-radius: 3px; text-align: center;">
-                                <div style="font-size: 40px; margin-bottom: 10px;">🏙️</div>
-                                <strong>City</strong>
-                                <p style="font-size: 11px; color: #666; margin-top: 5px;">Urban environment ready</p>
-                                <button class="game-play-btn" onclick="alert('Studio launching...')">Create</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+// PLAYERS ARRAY
+const players = [player];
+for(let i=1; i<=50; i++){
+    players.push({
+        x: 50 + i*25, y: 600, width:30, height:50,
+        color: '#' + Math.floor(Math.random()*16777215).toString(16),
+        vy:0, onGround:false, speed:3, jumpPower:10,
+        username:'Player'+(i+1), robux:0, tix:0, inventory:[]
+    });
+}
 
-            <!-- PROFILE PAGE -->
-            <div id="profilePage" class="page-content hidden">
-                <div class="profile-header">
-                    <div class="profile-avatar">👤</div>
-                    <h2 id="profileUsername">Guest</h2>
-                    <p style="font-size: 12px; opacity: 0.9;">Member since: <span id="memberSince">Today</span></p>
-                </div>
+// INPUT
+const keys = {};
+document.addEventListener('keydown', e => keys[e.key] = true);
+document.addEventListener('keyup', e => keys[e.key] = false);
 
-                <div class="content-box">
-                    <div class="box-header">Statistics</div>
-                    <div class="box-content">
-                        <div class="profile-stats">
-                            <div class="stat-box">
-                                <div class="stat-number" id="gamesPlayedStat">0</div>
-                                <div class="stat-label">Games Played</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-number" id="favoritesStat">0</div>
-                                <div class="stat-label">Favorites</div>
-                            </div>
-                            <div class="stat-box">
-                                <d
+// CHAT
+const chatInput = document.getElementById('chatInput');
+const chatMessages = document.getElementById('chatMessages');
+chatInput.addEventListener('keydown', e=>{
+    if(e.key==='Enter' && chatInput.value.trim()!==''){
+        const msg = document.createElement('div');
+        msg.textContent = `${player.username}: ${chatInput.value}`;
+        chatMessages.appendChild(msg);
+        chatInput.value='';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+});
+
+// CURRENCY FUNCTIONS
+function updateCurrencyUI(){
+    document.getElementById('robuxDisplay').textContent = player.robux;
+    document.getElementById('tixDisplay').textContent = player.tix;
+}
+function earnCurrency(type, amount){
+    if(type==='robux') player.robux += amount;
+    if(type==='tix') player.tix += amount;
+    updateCurrencyUI();
+}
+function spendCurrency(type, amount){
+    if(type==='robux' && player.robux>=amount){ player.robux-=amount; updateCurrencyUI(); return true; }
+    if(type==='tix' && player.tix>=amount){ player.tix-=amount; updateCurrencyUI(); return true; }
+    return false;
+}
+
+// SHOP
+function buyItem(item, price){
+    if(spendCurrency('tix', price)){
+        player.inventory.push(item);
+        alert('You bought a '+item+'!');
+    } else {
+        alert('Not enough Tickets!');
+    }
+}
+
+// COLLECTIBLE
+function collectCoins(){
+    earnCurrency('tix', 10);
+    alert('You collected a coin! +10 Tix');
+}
+
+// MAPS
+const maps = {
+    obby: [],
+    hangout: [],
+    brickworld: []
+};
+
+// GENERATE HUGE MAPS
+function generateMaps(){
+    // OBBY: 200 blocks + wedges + cylinders
+    for(let i=0;i<200;i++){
+        maps.obby.push({type:'block', x:i*60, y:600 - Math.floor(Math.random()*400), width:50, height:20, color:'#'+Math.floor(Math.random()*16777215).toString(16)});
+        if(i%5===0) maps.obby.push({type:'wedge', x:i*60+25, y:500 - Math.floor(Math.random()*200), width:50, height:25, color:'#'+Math.floor(Math.random()*16777215).toString(16)});
+        if(i%7===0) maps.obby.push({type:'cylinder', x:i*60+30, y:550, width:30, height:30, color:'#'+Math.floor(Math.random()*16777215).toString(16)});
+    }
+    // HANGOUT: 150 blocks + decorations
+    for(let i=0;i<150;i++){
+        maps.hangout.push({type:'block', x:i*60, y:600 - Math.floor(Math.random()*200), width:50, height:20, color:'#'+Math.floor(Math.random()*16777215).toString(16)});
+        if(i%3===0) maps.hangout.push({type:'wedge', x:i*60+20, y:500 - Math.floor(Math.random()*100), width:50, height:25, color:'#'+Math.floor(Math.random()*16777215).toString(16)});
+    }
+    // BRICKWORLD: 250 blocks + wedges + cylinders
+    for(let i=0;i<250;i++){
+        maps.brickworld.push({type:'block', x:i*50, y:600 - Math.floor(Math.random()*300), width:50, height:20, color:'#'+Math.floor(Math.random()*16777215).toString(16)});
+        if(i%4===0) maps.brickworld.push({type:'wedge', x:i*50+25, y:500 - Math.floor(Math.random()*150), width:50, height:25, color:'#'+Math.floor(Math.random()*16777215).toString(16)});
+        if(i%6===0) maps.brickworld.push({type:'cylinder', x:i*50+20, y:550, width:30, height:30, color:'#'+Math.floor(Math.random()*16777215).toString(16)});
+    }
+}
+
+generateMaps();
+
+// CURRENT MAP
+let currentMap='obby';
+let blocks = [...maps[currentMap]];
+function switchMap(name){ 
+    if(maps[name]){
+        currentMap=name; blocks=[...maps[name]]; 
+        player.x=50; player.y=600; 
+    } 
+}
+
+// PHYSICS
+function updatePlayer(p){
+    if(p===player){
+        if(keys['a']||keys['ArrowLeft']) p.x -= p.speed;
+        if(keys['d']||keys['ArrowRight']) p.x += p.speed;
+        if((keys['w']||keys['ArrowUp']||keys[' ']) && p.onGround){ p.vy=-p.jumpPower; p.onGround=false; }
+    }
+    p.vy += 0.5; // gravity
+    p.y += p.vy;
+    p.onGround = false;
+    for(const b of blocks){
+        const bw = b.width || 50, bh = b.height || 20;
+        if(p.x + p.width > b.x && p.x < b.x+bw && p.y+p.height > b.y && p.y < b.y+bh){
+            if(p.vy>0){ p.y=b.y-p.height; p.vy=0; p.onGround=true; }
+        }
+    }
+}
+
+// DRAWING
+function drawBlock(b){
+    ctx.fillStyle = b.color;
+    if(b.type==='block'){
+        ctx.fillRect(b.x,b.y,b.width,b.height);
+        for(let i=0;i<b.width;i+=10){ for(let j=0;j<b.height;j+=10){ ctx.fillStyle='#fff'; ctx.fillRect(b.x+i,b.y+j,4,4); } }
+    } else if(b.type==='wedge'){
+        ctx.beginPath(); ctx.moveTo(b.x,b.y+b.height); ctx.lineTo(b.x+b.width,b.y+b.height); ctx.lineTo(b.x,b.y); ctx.closePath(); ctx.fill();
+    } else if(b.type==='cylinder'){
+        ctx.beginPath(); ctx.ellipse(b.x+b.width/2, b.y+b.height/2, b.width/2, b.height/2, 0, 0, Math.PI*2); ctx.fill();
+    }
+}
+
+function drawPlayer(p){ ctx.fillStyle=p.color; ctx.fillRect(p.x,p.y,p.width,p.height); ctx.fillStyle='#000'; ctx.font="14px Arial"; ctx.fillText(p.username, p.x, p.y-5); }
+
+// MAIN LOOP
+function loop(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(const p of players) updatePlayer(p);
+    for(const b of blocks) drawBlock(b);
+    for(const p of players) drawPlayer(p);
+    requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+</body>
+</html>
